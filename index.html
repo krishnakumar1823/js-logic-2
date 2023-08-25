@@ -1,0 +1,208 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>
+            Logic
+        </title>
+    </head>
+    <body>
+
+        <h1 style="text-align: center;">Logic</h1>
+        <script> 
+            //1. largest number
+            console.log("-------------------------largest number------------------------")
+                var a=12
+                var b=8
+                var c=-5
+                if(a>b && a>c){
+                    console.log(`A is the largest number`)
+                }
+                else if(b>a && b>c){
+                    console.log(`B is the largest number`)
+                }
+                else{
+                    console.log(`c is the largest number`)
+                }
+
+
+            //2.Ascending order
+            console.log("-------------------------Ascending order------------------------")
+                var a=[122,23,46]
+                //method-1
+                    a=a.sort(function(a,b){
+                        return a-b
+                    })
+                    console.log(a)
+
+
+                var b=[122,23,46]
+                //method-2
+                    for(i=0;i<b.length;i++){
+                        for(j=i+1;j<b.length;j++){
+                            if(b[i]>b[j]){
+                                var temp;
+                                temp=b[i]
+                                b[i]=b[j]
+                                b[j]=temp
+                            }
+                        }
+                    }
+                    console.log(b)
+
+
+
+
+            //3.Descending order
+            console.log("-------------------------Descending order------------------------")
+                var a=[122,23,46,13]
+                //method-1
+                    a=a.sort(function(a,b){
+                        return b-a
+                    })
+                    console.log(a)
+
+
+                var b=[122,23,46,13]
+                //method-2
+                    for(i=0;i<b.length;i++){
+                        for(j=i+1;j<b.length;j++){
+                            if(b[i]<b[j]){
+                                var temp;
+                                temp=b[i]
+                                b[i]=b[j]
+                                b[j]=temp
+                            }
+                        }
+                    }
+                    console.log(b)
+
+            //4.average of 5 number using prompt
+
+                function start(){
+                    var a=parseInt(prompt("Enter the first mark"))
+                    var b=parseInt(prompt("Enter the second mark"))
+                    var c=parseInt(prompt("Enter the third mark"))
+                    var d=parseInt(prompt("Enter the fourth mark"))
+                    var e=parseInt(prompt("Enter the fifth mark"))
+
+                    return new Promise((re,rj)=>{
+                        if(a && b && c && d && e){
+                            re([a,b,c,d,e])
+                        }
+                        else{
+                            rj("something missing")
+                        }
+                    })
+
+                }   
+
+                function average(val){
+                    return new Promise((re,rj) => {
+                        var len=val.length
+                        if(val){
+                            var sum=0
+                            for(var i of val){
+                                sum+=i
+                            }
+
+                            var avg=sum/len
+                            re(avg)
+                        }
+                        else{
+                            rj("Avg Err")
+                        }
+                    })
+                }
+
+                function grade(val){
+                    return new Promise((re, rj) => {
+                        if(val < 100){
+                            if(val >80){
+                                re(`Your grade is A and your average score is = ${val}`)
+                            }
+                            else if(val>60 && val<80){
+                                re(`Your grade is B and your average score is = ${val}`)
+                            }
+                            else if(val>45 &&val<60){
+                                re(`Your grade is c and your average score is = ${val}`)
+                            }
+                            else{
+                                re(`your grade is D and your average score is = ${val}`)
+                            }
+                        }
+                        else{
+                            rj("Err")
+                        }
+                    })
+                }
+
+                async function access(){
+                    try{
+                        let x=await start()
+                        let y=await average(x)
+                        let z=await grade(y)
+
+                        console.log(z)
+                    }
+                    catch(e){
+                        console.log(e)
+                    }
+                }
+                access()
+				
+			
+			//4.String length
+            console.log("-------------------------length------------------------")
+			var a=["krishna","sathesh","sivapackia","anish"]
+			let x=a.filter((val)=>{
+				return val.length>6
+			}
+			console.log(x)
+			
+			
+			
+			//5.bizz buzz problem
+			console.log("-------------------------Bizz Buzz problem------------------------")
+			for(i=0;i<=100;i++){
+				if(i%3===0){
+					if(i%3===0 && i%5===0){
+						console.log("Bizz Buzz")
+					}
+					else{
+						console.log("Bizz")
+					}
+				}
+				else{
+					if(i%5===0){
+						if(i%3===0 && i%5===0){
+							console.log("Bizz Buzz")
+						}
+						else{
+							console.log("Buzz")
+						}
+					}
+				}
+				
+			
+			//6.prime number with range
+			console.log("-------------------------Bizz Buzz problem------------------------")
+			var a=parseInt(prompt(""))
+			var b=[]
+			
+			for(var i=1;i<=a;i++){
+				var count=0
+				for(j=1;j<=i;j++){
+					if(i%j===0){
+						count++
+					}
+				}
+				if(count===2){
+				b.push(i)
+				}
+			}
+			console.log(b)
+			
+			
+        </script>
+    </body>
+</html>
